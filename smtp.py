@@ -16,7 +16,6 @@ class Email:
             self.smtp = smtplib.SMTP_SSL(self.server, self.port)
         else:
             self.smtp = smtplib.SMTP(self.server, self.port)
-        self.smtp.set_debuglevel(1)
         self.smtp.login(self.user, self.passwd)
 
     @staticmethod
