@@ -1,7 +1,7 @@
 import json
 import action
 from email_work import EmailWork, Email
-
+from time import strftime, localtime
 
 def configure(file):
     with open(file, "r", encoding="utf-8") as f:
@@ -31,6 +31,6 @@ def load_email(conf: dict, actions: dict):
                           email_actions,
                           i["to"].split(" ")[0],
                           i["to"].split(" ")[1],
-                          i["subject"])
+                          i["subject"] + " - " + strftime('%Y-%b-%d', localtime()))
         emails.append(email)
     return emails

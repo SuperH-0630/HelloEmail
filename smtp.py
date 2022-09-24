@@ -2,6 +2,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 from email.utils import parseaddr, formataddr
 import smtplib
+from time import strftime, localtime
 
 
 class Email:
@@ -28,6 +29,7 @@ class Email:
         msg['From'] = self._format_addr(f'{name} <{self.user}>')
         msg['To'] = self._format_addr(f'{to} <{to_email}>')
         msg['Subject'] = Header(subject, 'utf-8').encode()
+        msg["Date"] = Header(strftime('%a, %d %b %Y %H:%M:%S %z', localtime())).encode()
         self.smtp.sendmail(self.user, [to_email], msg.as_string())
 
     def quit(self):
