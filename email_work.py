@@ -17,6 +17,3 @@ class EmailWork:
         for i in self.actions:
             text += i.to_text() + "\n"
         return self.email.send_email(self.name, self.to_user, self.to_email, self.subject, text)
-
-    def quit(self):
-        self.email.quit()
