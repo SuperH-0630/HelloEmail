@@ -30,7 +30,7 @@ if __name__ == '__main__':
         print("Tell me the conf file.")
         exit(1)
 
-    conf = configure(sys.argv[1])
+    conf = configure(sys.argv[1], logger)
     actions = load_action(conf, logger)
     emails = load_email(conf, actions, logger)
     for i in emails:

@@ -6,9 +6,12 @@ import logging
 
 
 
-def configure(file):
+def configure(file, logger: logging.Logger):
+    logger.info(f"Configure File: {file}")
     with open(file, "r", encoding="utf-8") as f:
-        return json.loads(f.read())
+        content = json.loads(f.read())
+        logger.info(f"Configure Content: {content}")
+        return content
 
 
 def load_action(conf: dict, logger: logging.Logger):
